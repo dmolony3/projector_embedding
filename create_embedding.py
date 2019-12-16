@@ -35,11 +35,12 @@ class DataReader():
 directory = '/home/microway/Documents/SPADE/results/IVUS_45MHz/inference_latest/images/synthesized_image'
 data_file = '/home/microway/Documents/SPADE/results/IVUS_45MHz/inference_latest/images/synthesized_image/generated.txt'
 num_image_rows = 64 # must be divisble by batch_size
-image_dim = 64
+embedding_dim = 64
+image_dim = 128
 
-sprite_file = 'sprite_image' + '_' + str(image_dim) + 'x' + str(image_dim) +'.jpg'
-vecs_file = 'vecs' + '_' + str(image_dim) + 'x' + str(image_dim) +'.tsv'
-meta_file = 'metadata' + '_' + str(image_dim) + 'x' + str(image_dim) +'.tsv'
+sprite_file = 'sprite_image' + '_' + str(embedding_dim) + 'x' + str(embedding_dim) +'.jpg'
+vecs_file = 'vecs' + '_' + str(embedding_dim) + 'x' + str(embedding_dim) +'.tsv'
+meta_file = 'metadata' + '_' + str(embedding_dim) + 'x' + str(embedding_dim) +'.tsv'
 
 batch_size = 1
 num_images = num_image_rows**2
@@ -52,13 +53,13 @@ f1 = open(vecs_file, 'a', encoding='utf-8')
 f2 = open(meta_file, 'a', encoding='utf-8')
 for i in range(num_images):
     batch = next(data_iterator)
-    batch_downsampled = tf.image.resize(batch, [image_dim, image_dim])
-    batch_vectorized = tf.reshape(batch_downsampled, shape=[batch_size, image_dim*image_dim])
+    batch_downsampled = tf.image.resize(batch, [embedding_dim, embedding_dim])
+    batch_vectorized = tf.reshape(batch_downsampled, shape=[batch_size, embedding_dim*embedding_dim])
     batch_vectorized = tf.squeeze(batch_vectorized, 0)
     dim = batch_vectorized.shape
     f1.write('\t'.join([str(batch_vectorized.numpy()[j]) for j in range(dim[0])]) + "\n")
     f2.write('{}\n'.format(1)) # set label to 1 for all images
-    image_list.append(tf.squeeze(tf.squeeze(batch_downsampled, 0), -1))
+    image_list.append(tf.squeeze(tf.squeeze(tf.image.resize(batch, [image_dim, image_dim]), 0), -1))
 f1.close()
 f2.close()
 

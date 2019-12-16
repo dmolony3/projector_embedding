@@ -7,6 +7,7 @@ In create_embedding.py specify the following:
 ** data_file**:Path to a file which contains each image filename (no need to include the absolute file path)
 **num_image_rows**: This number sets the number of images in each row in the sprite image (see example sprite image below). This is the square root of the total number of images
 **image_dim**: The dimension of the images contained within the sprite image. Recommended to not exceed 64x64.
+**embedding_dim**: The embedding dimension of the images. Images are resized to this size and embedding vectors are generated.
 
 Edit *config.json* to set the correct value for the following
 **tensorShape**: Should be [num_images,  image_dim<sup>2</sup>]. 

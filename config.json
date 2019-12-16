@@ -11,8 +11,8 @@
         "sprite": {
           "imagePath": "https://raw.githubusercontent.com/dmolony3/projector_embedding/master/sprite_image_64x64.jpg",
           "singleImageDim": [
-            64,
-            64
+            128,
+            128
           ]
         }
       }
