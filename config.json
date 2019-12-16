@@ -4,7 +4,7 @@
         "tensorName": "IVUS embeddings",
         "tensorShape": [
           4096,
-          64
+          4096
         ],
         "tensorPath": "https://raw.githubusercontent.com/dmolony3/projector_embedding/master/vecs_64x64.tsv",
         "metadataPath": "https://raw.githubusercontent.com/dmolony3/projector_embedding/master/metadata_64x64.tsv",

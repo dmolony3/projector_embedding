@@ -15,6 +15,8 @@ Paths to me the *vecs.tsv*, *metadata.tsv* and *sprite_image.jpg*
 
 Finally, time to let the projector [run](http://projector.tensorflow.org/?config=https://raw.githubusercontent.com/dmolony3/projector_embedding/master/config.json). 
 
+![Example sprite image](sprite_image_64x64.jpg)
+
 # Acknowledgements
 Inspired by the the following repository
 [https://github.com/anthonySegura/facenet_projections](https://github.com/anthonySegura/facenet_projections)
